@@ -25,6 +25,5 @@ pcall(function ()
    local _ = SILE.inputters.pandocast
 end)
 
-require("silex.compat")
 require("silex.lang")
 require("silex.fixes")

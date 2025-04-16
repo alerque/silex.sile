@@ -7,7 +7,7 @@
 A silex is a kind of hard stone.
 
 This is **sile·x**, a common layer for [**re·sil·ient**](https://github.com/Omikhleia/resilient.sile) and other modules:
-Some common bricks and blocks, compatility features, opinionated hacks, and eXperimental eXpansions, hence the name.
+Some common bricks and blocks, opinionated hacks, and eXperimental eXpansions, hence the name.
 
 :warning: **sile·x** overrides several SILE internals when fully enabled, and may therefore break some of your packages and classes.
 
@@ -90,14 +90,6 @@ This modules implements some additions and changes which should be provided by S
   See [SILE issue 1048](https://github.com/sile-typesetter/sile/issues/1048) for context. Djot and Markdown both recognize nested emphasis...
 
   This feature is planned to be available in SILE 0.15 (in development).
-
-**silex.compat**
-
-Compatibility layer providing some fixes also proposed to SILE and possibly integrated in a release.
-This is obviously not exhaustive, and it only covers issues I backported for my own packages to work with the then-current SILE releases.
-
-_Rationale:_
-Official release dates are not predictable, and may moreover take some time to reach the users, but normally you do not need to use this module if you are using the latest SILE release.
 
 **silex.override**
 
