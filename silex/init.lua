@@ -9,7 +9,6 @@
 SILE.X = SILE.X or {
    version = "0.6.0",
 }
-require("silex.ast")
 require("silex.override")
 
 SU.debug("silex", "Loading extra inputters if available")

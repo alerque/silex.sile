@@ -109,7 +109,7 @@ If you use packages or classes from the following modules, some features of **si
 
 - The packages from [smartquotes.sile](https://github.com/Omikhleia/smartquotes.sile) enable **silex.lang**.
 
-- The packages and inputters from [markdown.sile](https://github.com/Omikhleia/markdown.sile) enable **silex.lang** and **sile.ast**.
+- The packages and inputters from [markdown.sile](https://github.com/Omikhleia/markdown.sile) enable **silex.lang**.
 
 - The packages and classes from [resilient.sile](https://github.com/Omikhleia/resilient.sile) enable **all** features.
 
