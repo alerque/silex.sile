@@ -62,35 +62,6 @@ _Rationale:_
 See [SILE PR 1641](https://github.com/sile-typesetter/sile/pull/1641) for details and more complete proposal.
 We cannot wait forever for SILE to implement this: Markdown and Djot need to be able to support qualified language names, notably for smart quotes to work adequately.
 
-**silex.fixes** :warning: Opinionated departure from SILE 0.14.
-
-This modules implements some additions and changes which should be provided by SILE in my humble opinion...
-
-- More tolerance on uninitialized inputters options (non-breaking)
-
-  This fix is planned to be available in SILE 0.15 (in development).
-
-- Greek numbering ("greek") for counters, similar to the existing "alpha" (non-breaking)
-
-  _Rationale:_
-  There are books where one wants to "number" items with Greek letters in sequence (e.g. annotations in biblical material), as α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ τ υ φ χ ψ ω. ICU provides _arithmetic_ Greek numbering systems, but this is not what one wants here.
-
-  This utility is planned to be available in SILE 0.15 (in development).
-
-- Re-implementation of the centered and ragged environments, to respect margins (a.k.a. left and right skips) when nested (for instance in block quotes) and to honor the paragraph indent (possibly breaking :warning:)
-  
-  _Rationale:_
-  The "core" implementation of these environments is broken since its inception.
-
-  These features are planned to be available in SILE 0.15 (in development).
-
-- Re-implementation of the `\em` command to support nested emphasis (possibly breaking :warning:)
-
-  _Rationale:_
-  See [SILE issue 1048](https://github.com/sile-typesetter/sile/issues/1048) for context. Djot and Markdown both recognize nested emphasis...
-
-  This feature is planned to be available in SILE 0.15 (in development).
-
 **silex.override**
 
 When loaded, this layer enforces using silex-modified versions of some packages and components, overriding the original ones.

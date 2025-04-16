@@ -26,4 +26,3 @@ pcall(function ()
 end)
 
 require("silex.lang")
-require("silex.fixes")
