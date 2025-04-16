@@ -28,7 +28,6 @@ build = {
 
     ["sile.silex.packages.cropmarks"]   = "packages/cropmarks/init.lua",
     ["sile.silex.packages.rules"]       = "packages/rules/init.lua",
-    ["sile.silex.packages.scalebox"]    = "packages/scalebox/init.lua",
 
     ["sile.silex.outputters.base"]      = "outputters/base.lua",
     ["sile.silex.outputters.libtexpdf"] = "outputters/libtexpdf.lua",
