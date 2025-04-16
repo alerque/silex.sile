@@ -33,10 +33,6 @@ Obviously, modules needing it (and therefore also intalling it as a dependency),
 
 Modified implementation of the base typesetter and class.
 
-- Cancellation of the multiple package instantiation model in the base class.
-
-  See **silex.fork** below for details.
-
 - Propagation of hanged indent from paragraph to paragraph.
 
   _Rationale:_
@@ -94,28 +90,6 @@ This modules implements some additions and changes which should be provided by S
   See [SILE issue 1048](https://github.com/sile-typesetter/sile/issues/1048) for context. Djot and Markdown both recognize nested emphasis...
 
   This feature is planned to be available in SILE 0.15 (in development).
-
-**silex.fork** :warning: Opinionated departure from SILE 0.14.
-
-The module cancels the multiple package instantiation model introduced in SILE 0.13-0.14. Packages are no longer re-instantiated when loaded multiple times.
-
-_Rationale:_
-I struggled too many times with this issue in August 2021 (initial effort porting my 0.12.5 packages to 0.14.x) and afterwards.
-See [SILE issue 1531](https://github.com/sile-typesetter/sile/issues/1531) for some details.
-I can't make _any_ sense of this half-baked "feature", which introduces unintended side-effects and problems impossible to decently address, making the life of package and class developers real harder. So I'm moving on and cancelling it.
-The _very few_ cases where this could have been interesting can be addressed in other ways...
-
-Some of the issues are supposed to be fixed in SILE 0.15 (in development).
-
-**silex.ast**
-
-A library of common SILE AST utilities.
-
-_Rationale:_
-The need for such functions kept popping up in my packages and inputters, so I decided to factor them out, to ease maintenance and avoid code duplication.
-In my humble opinion, SILE should eventually provide these functions in the core distribution (and clean up or refactor some of its existing methods on that occasion)...
-
-These utilities are planned to be available in SILE 0.15 (in development).
 
 **silex.compat**
 
