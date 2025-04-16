@@ -26,7 +26,6 @@ build = {
     ["sile.silex.classes.base"]     = "classes/base.lua",
     ["sile.silex.typesetters.base"] = "typesetters/base.lua",
 
-    ["sile.silex.packages.background"]  = "packages/background/init.lua",
     ["sile.silex.packages.color"]       = "packages/color/init.lua",
     ["sile.silex.packages.cropmarks"]   = "packages/cropmarks/init.lua",
     ["sile.silex.packages.pdf"]         = "packages/pdf/init.lua",
