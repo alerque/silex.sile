@@ -30,7 +30,6 @@ build = {
     ["sile.silex.packages.color"]       = "packages/color/init.lua",
     ["sile.silex.packages.cropmarks"]   = "packages/cropmarks/init.lua",
     ["sile.silex.packages.pdf"]         = "packages/pdf/init.lua",
-    ["sile.silex.packages.rotate"]      = "packages/rotate/init.lua",
     ["sile.silex.packages.rules"]       = "packages/rules/init.lua",
     ["sile.silex.packages.scalebox"]    = "packages/scalebox/init.lua",
     ["sile.silex.packages.url"]         = "packages/url/init.lua",
