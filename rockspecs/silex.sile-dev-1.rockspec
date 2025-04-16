@@ -22,8 +22,7 @@ build = {
     ["sile.silex"]          = "silex/init.lua",
     ["sile.silex.lang"]     = "silex/lang.lua",
     ["sile.silex.override"] = "silex/override.lua",
-
-    ["sile.silex.classes.base"]     = "classes/base.lua",
+    ["sile.classes.silex"]     = "classes/silex.lua",
     ["sile.silex.typesetters.base"] = "typesetters/base.lua",
   }
 }
