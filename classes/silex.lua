@@ -1,7 +1,7 @@
 --- SILE document class interface.
 -- @interfaces classes
 
-local base = require("classes.base")
+local base = require("classes.plain")
 
 local class = pl.class(base)
 class._name = "silex"
