@@ -3,74 +3,82 @@
 
 local inf_bad = 10000
 
--- BEGIN SILEX LINER - HACK!
-SILE.types.node.discretionary.markAsPrebreak = function (self)
-   self.used = true
-   if self.parent then
-      self.parent.hyphenated = true
-   end
-   self.is_prebreak = true
-end
+local function monkey_patch_types ()
 
-SILE.types.node.discretionary.cloneAsPostbreak = function (self)
-   if not self.used then
-      SU.error("Cannot clone a non-used discretionary (previously marked as prebreak)")
-   end
-   return SILE.types.node.discretionary({
-      prebreak = self.prebreak,
-      postbreak = self.postbreak,
-      replacement = self.replacement,
-      parent = self.parent,
-      used = true,
-      is_prebreak = false,
-   })
-end
-
-SILE.types.node.discretionary.outputYourself = function (self, typesetter, line)
-   -- See typesetter:computeLineRatio() which implements the currently rather
-   -- messy hyphenated checks.
-   -- Example: consider the word "out-put-ter".
-   -- The node queue contains N(out)D(-)N(put)D(-)N(ter) all pointing to the same
-   -- parent N(output), and here we hit D(-)
-
-   -- Non-hyphenated parent: when N(out) was hit, we went for outputting
-   -- the whole parent, so all other elements must now be skipped.
-   if self.parent and not self.parent.hyphenated then
-      return
+   -- BEGIN SILEX LINER - HACK!
+   SILE.types.node.discretionary.markAsPrebreak = function (self)
+      self.used = true
+      if self.parent then
+         self.parent.hyphenated = true
+      end
+      self.is_prebreak = true
    end
 
-   -- It's possible not to have a parent (e.g. on a discretionary directly
-   -- added in the queue and not coming from the hyphenator logic).
-   -- Eiher that, or we have a hyphenated parent.
-   if self.used then
-      -- This is the actual hyphenation point.
-      if self.is_prebreak then
-         -- prebreak (by the end of the line)
-         for _, node in ipairs(self.prebreak) do
-            node:outputYourself(typesetter, line)
+   SILE.types.node.discretionary.cloneAsPostbreak = function (self)
+      if not self.used then
+         SU.error("Cannot clone a non-used discretionary (previously marked as prebreak)")
+      end
+      return SILE.types.node.discretionary({
+         prebreak = self.prebreak,
+         postbreak = self.postbreak,
+         replacement = self.replacement,
+         parent = self.parent,
+         used = true,
+         is_prebreak = false,
+      })
+   end
+
+   SILE.types.node.discretionary.outputYourself = function (self, typesetter, line)
+      -- See typesetter:computeLineRatio() which implements the currently rather
+      -- messy hyphenated checks.
+      -- Example: consider the word "out-put-ter".
+      -- The node queue contains N(out)D(-)N(put)D(-)N(ter) all pointing to the same
+      -- parent N(output), and here we hit D(-)
+
+      -- Non-hyphenated parent: when N(out) was hit, we went for outputting
+      -- the whole parent, so all other elements must now be skipped.
+      if self.parent and not self.parent.hyphenated then
+         return
+      end
+
+      -- It's possible not to have a parent (e.g. on a discretionary directly
+      -- added in the queue and not coming from the hyphenator logic).
+      -- Eiher that, or we have a hyphenated parent.
+      if self.used then
+         -- This is the actual hyphenation point.
+         if self.is_prebreak then
+            -- prebreak (by the end of the line)
+            for _, node in ipairs(self.prebreak) do
+               node:outputYourself(typesetter, line)
+            end
+         else
+            -- postbreak (by the beginning of the line)
+            for _, node in ipairs(self.postbreak) do
+               node:outputYourself(typesetter, line)
+            end
          end
       else
-         -- postbreak (by the beginning of the line)
-         for _, node in ipairs(self.postbreak) do
+         -- This is not the hyphenation point (but another discretionary in the queue)
+         -- E.g. we were in the case where we have N(out)D(-) [line break] N(out)D(-)N(ter)
+         -- and now hit the second D(-).
+         -- Unused discretionaries are obviously replaced.
+         for _, node in ipairs(self.replacement) do
             node:outputYourself(typesetter, line)
          end
       end
-   else
-      -- This is not the hyphenation point (but another discretionary in the queue)
-      -- E.g. we were in the case where we have N(out)D(-) [line break] N(out)D(-)N(ter)
-      -- and now hit the second D(-).
-      -- Unused discretionaries are obviously replaced.
-      for _, node in ipairs(self.replacement) do
-         node:outputYourself(typesetter, line)
-      end
    end
+   -- END SILEX LINER - HACK!
 end
--- END SILEX LINER - HACK!
 
 local base = require("typesetters.base")
 
 local typesetter = pl.class(base)
 typesetter._name = "silex"
+
+function typesetter:_init(frame)
+   monkey_patch_types()
+   base._init(self, frame)
+end
 
 function typesetter:endline ()
    self:leaveHmode()
