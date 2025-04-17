@@ -43,15 +43,6 @@ Modified implementation of the base typesetter and class.
   _Rationale:_
   Early adoption of SILE PR [1977](https://github.com/sile-typesetter/sile/pull/1977)
 
-**outputters and packages** :warning: In-advance adoption of features.
-
-Modified implementation of the PDF outputter and of several packages depending on it.
-
-_Rationale:_
-Early adoption of SILE PR [1853](https://github.com/sile-typesetter/sile/pull/1853)
-
-The corresponding changes are planned to be available in SILE 0.15 (in development).
-
 **silex.lang**
 
 This module overrides the language support in SILE to accept and resolve BCP47 language tags, such as `en-GB`, `es-MX`, `fr-CH`, etc.

@@ -25,7 +25,5 @@ build = {
 
     ["sile.silex.classes.base"]     = "classes/base.lua",
     ["sile.silex.typesetters.base"] = "typesetters/base.lua",
-
-    ["sile.silex.outputters.libtexpdf"] = "outputters/libtexpdf.lua",
   }
 }
