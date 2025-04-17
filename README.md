@@ -53,10 +53,6 @@ _Rationale:_
 See [SILE PR 1641](https://github.com/sile-typesetter/sile/pull/1641) for details and more complete proposal.
 We cannot wait forever for SILE to implement this: Markdown and Djot need to be able to support qualified language names, notably for smart quotes to work adequately.
 
-**silex.override**
-
-When loaded, this layer enforces using silex-modified versions of some packages and components, overriding the original ones.
-
 ## Affected modules
 
 If you use packages or classes from the following modules, some features of **silex** will be loaded globally. Your documents using them may therefore be impacted from that point.

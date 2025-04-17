@@ -9,7 +9,6 @@
 SILE.X = SILE.X or {
    version = "0.6.0",
 }
-require("silex.override")
 
 SU.debug("silex", "Loading extra inputters if available")
 pcall(function ()
