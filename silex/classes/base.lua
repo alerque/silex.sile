@@ -100,11 +100,13 @@ function class:setOptions (options)
    if not SILE.documentState.sheetSize then
       SILE.documentState.sheetSize = {
          SILE.documentState.paperSize[1],
-         SILE.documentState.paperSize[2]
+         SILE.documentState.paperSize[2],
       }
    end
-   if SILE.documentState.sheetSize[1] < SILE.documentState.paperSize[1]
-         or SILE.documentState.sheetSize[2] < SILE.documentState.paperSize[2] then
+   if
+      SILE.documentState.sheetSize[1] < SILE.documentState.paperSize[1]
+      or SILE.documentState.sheetSize[2] < SILE.documentState.paperSize[2]
+   then
       SU.error("Sheet size shall not be smaller than the paper size")
    end
    if SILE.documentState.sheetSize[1] < SILE.documentState.paperSize[1] + SILE.documentState.bleed then
@@ -196,7 +198,7 @@ function class:loadPackage (packname, options)
       -- END SILEX CANCEL MULTIPLE PACKAGE INSTANCIATION
       self.packages[pack._name] = pack(options)
    else -- legacy package
-      SU.warn("CLASS: legacy package "..pack._name)
+      SU.warn("CLASS: legacy package " .. pack._name)
       self:initPackage(pack, options)
    end
 end
@@ -638,9 +640,9 @@ end
 -- WARNING: not called as class method
 function class.endPar (typesetter)
    typesetter:pushVglue(SILE.settings:get("document.parskip"))
-  -- BEGIN SILEX HANGED LINES
-  --   (MOVED TO THE TYPESETTER)
-  -- END SILEX HANGED LINES
+   -- BEGIN SILEX HANGED LINES
+   --   (MOVED TO THE TYPESETTER)
+   -- END SILEX HANGED LINES
 end
 
 function class:newPage ()

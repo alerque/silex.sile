@@ -1,27 +1,27 @@
 std = "min+sile"
 include_files = {
-  "**/*.lua",
-  "sile.in",
-  "*.rockspec",
-  ".busted",
-  ".luacheckrc"
+   "**/*.lua",
+   "sile.in",
+   "*.rockspec",
+   ".busted",
+   ".luacheckrc",
 }
 exclude_files = {
-  "benchmark-*",
-  "compare-*",
-  "sile-*",
-  "lua_modules",
-  "lua-libraries",
-  ".lua",
-  ".luarocks",
-  ".install"
+   "benchmark-*",
+   "compare-*",
+   "sile-*",
+   "lua_modules",
+   "lua-libraries",
+   ".lua",
+   ".luarocks",
+   ".install",
 }
 files["**/*_spec.lua"] = {
-  std = "+busted"
+   std = "+busted",
 }
 max_line_length = false
 ignore = {
-  "581", -- operator order warning doesn't account for custom table metamethods
-  "212/self" -- unused argument self: counterproductive warning
+   "581", -- operator order warning doesn't account for custom table metamethods
+   "212/self", -- unused argument self: counterproductive warning
 }
 -- vim: ft=lua

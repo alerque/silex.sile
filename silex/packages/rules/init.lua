@@ -114,30 +114,30 @@ function package:registerCommands ()
       if not SILE.typesetter:vmode() then
          SU.deprecated("\\fullrule in horizontal mode", "\\hrule or \\hrulefill", "0.13.1", "0.15.0")
          if options.width then
-         SU.deprecated("\\fullrule with width", "\\hrule and \\raise", "0.13.1", "0.15.0")
-         SILE.call("raise", { height = raise }, function ()
-            SILE.call("hrule", {
-               height = thickness,
-               width = options.width
-            })
-         end)
+            SU.deprecated("\\fullrule with width", "\\hrule and \\raise", "0.13.1", "0.15.0")
+            SILE.call("raise", { height = raise }, function ()
+               SILE.call("hrule", {
+                  height = thickness,
+                  width = options.width,
+               })
+            end)
          else
-         -- This was very broken anyway, as it was overflowing the line.
-         -- At least we try better...
-         SILE.call("hrulefill", { raise = raise, thickness = thickness })
+            -- This was very broken anyway, as it was overflowing the line.
+            -- At least we try better...
+            SILE.call("hrulefill", { raise = raise, thickness = thickness })
          end
          return
       end
       if options.width then
          SU.deprecated("\\fullrule with width", "\\hrule and \\raise", "0.13.1 ", "0.15.0")
          SILE.call("raise", { height = raise }, function ()
-         SILE.call("hrule", {
-            height = thickness,
-            width = options.width
-         })
+            SILE.call("hrule", {
+               height = thickness,
+               width = options.width,
+            })
          end)
       end
-   -- END DEPRECATION COMPATIBILITY
+      -- END DEPRECATION COMPATIBILITY
 
       SILE.typesetter:leaveHmode()
       SILE.call("noindent")
